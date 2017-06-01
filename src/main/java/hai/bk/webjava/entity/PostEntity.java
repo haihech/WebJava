@@ -45,7 +45,7 @@ public class PostEntity {
 	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "admin_id", nullable = false,
+    @JoinColumn(name = "category_id", nullable = false,
     foreignKey = @ForeignKey(name = "post_category_id_foreign") )
 	public CategoryEntity getCategoryEntity() {
 		return categoryEntity;

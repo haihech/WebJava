@@ -26,8 +26,7 @@ public class RoleDAOImpl implements RoleDAO{
 		Criteria crit = session.createCriteria(DivideRoleEntity.class, "div");
 		
 		// to define the inner join
-		crit.createAlias("div.adminEntity", "role");
-		crit.createAlias("div.roleEntity", "admin");
+		crit.createAlias("div.adminEntity", "admin");
 		crit.add(Restrictions.eq("admin.id", adminID));
 		
 		@SuppressWarnings("unchecked")
@@ -45,9 +44,13 @@ public class RoleDAOImpl implements RoleDAO{
 	public List<String> listRoleByAdminID(String adminID) {
 		List<String> listResult = new ArrayList<>();
 		List<DivideRoleEntity> list = this.listRole(adminID);
-		for(DivideRoleEntity item : list){
-			listResult.add(item.getRoleEntity().getId());
+		
+		if(list.size() > 0){
+			for(DivideRoleEntity item : list){
+				listResult.add(item.getRoleEntity().getId());
+			}
 		}
+		
 		return listResult;
 	}
 	

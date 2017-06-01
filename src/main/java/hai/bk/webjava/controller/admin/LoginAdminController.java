@@ -1,27 +1,42 @@
-package hai.bk.webjava.controller;
+package hai.bk.webjava.controller.admin;
 
 import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller
-public class MainController {
+import hai.bk.webjava.service.admin.AdminService;
 
+@Controller
+public class LoginAdminController {
+
+	@Autowired
+	AdminService adminService;
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage(Model model) {
 		return "admin/login";
 	}
+	
+	@RequestMapping(value = "/admin/logout", method = RequestMethod.GET)
+	public String logoutPage(HttpServletRequest request) {
+		request.getSession().removeAttribute("username");
+		request.getSession().removeAttribute("listRole");
+		return "admin/login";
+	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/home", method = RequestMethod.GET)
 	public String homePage(Model model, HttpServletRequest request) {
 		Principal principal = request.getUserPrincipal();
-		model.addAttribute("username", principal.getName());
-		return "admin/index";
+		String username = principal.getName();
+		request.getSession().setAttribute("username", username);
+		request.getSession().setAttribute("listRole", adminService.getListRole(username));
+		return "admin/home";
 	}
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
