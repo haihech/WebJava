@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java/hai/bk/webjava/auth/MyUserAuthenticationService.java=UTF-8
 encoding//src/main/java/hai/bk/webjava/config/WebMvcConfig.java=UTF-8
 encoding//src/main/java/hai/bk/webjava/config/WebSecurityConfig.java=UTF-8
+encoding//src/main/java/hai/bk/webjava/dao/impl/PostDAOImpl.java=UTF-8
 encoding//src/main/java/hai/bk/webjava/entity/DivideRoleEntity.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin/login.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin/nav.jsp=UTF-8

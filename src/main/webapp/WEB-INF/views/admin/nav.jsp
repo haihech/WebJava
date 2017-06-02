@@ -141,9 +141,9 @@
                             <a href="#" style="font-size: 16px"><i class="fa fa-bars fa-fw  menu-hinh"></i> Bài đăng<span class="fa arrow"></span></a>
                             
                             <ul class="nav nav-second-level" id="baidang">
-                                <li><a href="list-post-browse">Chờ phê duyệt</a></li>
-                                <li><a href="#">Đăng lên trang chủ</a></li>
-                                <li><a href="#">Danh sách</a></li>
+                                <li><a href="${pageContext.request.contextPath}/admin/list-post-browse">Chờ phê duyệt</a></li>
+                                <li><a href="${pageContext.request.contextPath}/admin/list-post-home">Đăng lên trang chủ</a></li>
+                                <li><a href="list-post">Danh sách</a></li>
                                 <li><a href="#">Quản lý danh mục</a></li>
                                     
                             </ul>

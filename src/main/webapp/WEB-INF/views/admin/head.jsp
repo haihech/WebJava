@@ -12,7 +12,7 @@
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/dataTable/jquery.dataTables.min.css"
 	rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 	rel="stylesheet">
 
 <link href="${pageContext.request.contextPath}/resources/css/jquery.ui.autocomplete.css"
