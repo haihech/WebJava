@@ -33,7 +33,7 @@
 				<div class="col-md-12">
 					<div class="main-right" id="containerPost">
 						<div>
-							<h3 class="text-info">Bài đăng chờ phê duyệt (${listPost.size()})</h3>
+							<h3 class="text-info">Danh sách bài được yêu thích nhất</h3>
 						</div>
 
 						<br /> <br />
@@ -49,11 +49,11 @@
 									<th>Tiêu đề</th>
 									<th>Loại</th>
 									<th>Lượt xem</th>
-									<th>Duyệt</th>
-									<th>Hủy</th>
+									<th>Lượt like</th>
 								</tr>
 							</thead>
 							<tbody>
+							    <c:if test="${not empty listPost}">
 								<%
 									int i = 0;
 								%>
@@ -74,16 +74,20 @@
 										<td style="width: 200px">${post.title }</td>
 										<td>${post.categoryEntity.type}</td>
 										<td style="width: 100px">${post.views }</td>
-										<td>
-												<button class="btn btn-primary btn-sm" onclick="confirmPost(${post.id})">Duyệt</button>
-											</td>
-										<td>
-												<button class="btn btn-danger btn-sm" onclick="cancelPost(${post.id})">Hủy</button>
-											</td>
+										<td style="width: 100px">${post.likes }</td>  
 									</tr>
 								</c:forEach>
+								</c:if>
 							</tbody>
 						</table>
+						
+						<c:if test="${not empty listPost}">
+						<br/><br/>
+                       <div><center>
+                           <a href="upload-home-page/${listPost.size()}" class="btn btn-primary">Đăng lên trang chủ</a>
+                       </center></div>
+                       </c:if>
+                       
 						<br /> <br /> <br /> <br />
 					</div>
 				</div>
@@ -95,41 +99,19 @@
 	</div>
 	<!-- /#wrapper -->
 
-<script>
-  $(document).ready(function() {
-	  $("#myTable").DataTable();
-  });
-  
-  function confirmPost(id){
-    $.ajax({
-    	method:'GET',
-        url:"confirm-post/"+id,
-        success:function(data){
-        	$("#containerPost").html();
-        	$("#containerPost").html(data);
-      	}
-    });
-  }
-  
-  function cancelPost(id){
-	    $.ajax({
-	      url:"cancel-post/"+id,
-	      method:'GET',
-	      success:function(data){
-	        $("#containerPost").html();
-	        $("#containerPost").html(data);
-	      }
-	    });
-	  }
-  
+<script >
+   var x= document.getElementById("baidang");
+    x.className="nav nav-second-level collapse in";
+    x.setAttribute('aria-expanded','true');
+    x.style.height="auto";
+    x.getElementsByTagName("a")[1].className="active";
 
 </script>
-<script>
-	var x= document.getElementById("baidang");
-	x.className="nav nav-second-level collapse in";
-	x.setAttribute('aria-expanded','true');
-	x.style.height="auto";
-	x.getElementsByTagName("a")[0].className="active";
+
+<script >
+  $(document).ready(function() {
+    $('#myTable').DataTable();
+  } );
 </script>
 
 </body>

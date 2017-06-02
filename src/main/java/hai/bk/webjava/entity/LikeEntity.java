@@ -17,6 +17,7 @@ public class LikeEntity {
 	private int id;
 	private UserEntity userEntity;
 	private PostEntity postEntity;
+	private int postId;
 	private int type;
 	private Timestamp created_at;
 	private Timestamp updated_at;
@@ -43,7 +44,7 @@ public class LikeEntity {
 	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id", nullable = false, unique = true,
+    @JoinColumn(name = "post_id", nullable = false, unique = true, insertable = false, updatable = false,
     foreignKey = @ForeignKey(name = "user_like_post_id_foreign") )
 	public PostEntity getPostEntity() {
 		return postEntity;
@@ -75,6 +76,14 @@ public class LikeEntity {
 	}
 	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
+	}
+	
+	@Column(name = "post_id", nullable = false)
+	public int getPostId() {
+		return postId;
+	}
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 	
 	

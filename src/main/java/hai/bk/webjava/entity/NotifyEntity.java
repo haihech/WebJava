@@ -19,6 +19,7 @@ public class NotifyEntity {
 	private String message;
 	private String type;
 	private String link;
+	private int userId;
 	private UserEntity userEntity;
 	private Timestamp created_at;
 	private Timestamp updated_at;
@@ -66,7 +67,7 @@ public class NotifyEntity {
 	}
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "users_id", nullable = false, unique = true,
+    @JoinColumn(name = "users_id", nullable = false, unique = true, insertable = false, updatable = false,
     foreignKey = @ForeignKey(name = "notifications_users_id_foreign") )
 	public UserEntity getUserEntity() {
 		return userEntity;
@@ -90,6 +91,14 @@ public class NotifyEntity {
 	}
 	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
+	}
+	
+	@Column(name = "users_id")
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
 	

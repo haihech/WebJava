@@ -20,6 +20,7 @@ public class PostEntity {
 	private String title;
 	private int views;
 	private int status;
+	private int likes;
 	private String img;
 	private Timestamp created_at;
 	private Timestamp updated_at;
@@ -99,6 +100,14 @@ public class PostEntity {
 	}
 	public void setUpdated_at(Timestamp updated_at) {
 		this.updated_at = updated_at;
+	}
+	
+	@Column(name = "likes", nullable = false)
+	public int getLikes() {
+		return likes;
+	}
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
 	
 	
