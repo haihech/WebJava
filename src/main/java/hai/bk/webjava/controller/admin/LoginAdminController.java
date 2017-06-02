@@ -1,6 +1,7 @@
 package hai.bk.webjava.controller.admin;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,6 +35,11 @@ public class LoginAdminController {
 	public String homePage(Model model, HttpServletRequest request) {
 		Principal principal = request.getUserPrincipal();
 		String username = principal.getName();
+		String u = (String) request.getSession().getAttribute("username");
+		if(u != null){
+			request.getSession().removeAttribute("username");
+			request.getSession().removeAttribute("listRole");
+		}
 		request.getSession().setAttribute("username", username);
 		request.getSession().setAttribute("listRole", adminService.getListRole(username));
 		return "admin/home";
